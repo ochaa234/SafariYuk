@@ -1,12 +1,13 @@
 'use strict';
 const users = require('../data/users.json');
+const { hashPassword } = require('../helpers/bcrypt');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
     const data = users.map((user) => ({
       email: user.email,
-      password: user.password,
+      password: hashPassword(user.password),
       role: user.role,
       createdAt: new Date(),
       updatedAt: new Date()

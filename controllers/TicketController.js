@@ -56,22 +56,20 @@ class TicketController {
     }
   }
 
-  // POST /admin/tickets/:id/delete  -> DELETE pakai promise chaining + notifikasi
-  static delete(req, res) {
-    let ticketName = '';
+  // POST /admin/tickets/:id/delete  -> DELETE pakai promise chaining 
+  static async delete(req, res) {
+  try {
+    const ticket = await Ticket.findByPk(req.params.id);
+    const ticketName = ticket.name;
 
-    Ticket.findByPk(req.params.id)
-      .then((ticket) => {
-        ticketName = ticket.name;
-        return ticket.destroy();
-      })
-      .then(() => {
-        res.redirect(`/admin/tickets?deleted=${encodeURIComponent(ticketName)}`);
-      })
-      .catch((err) => {
-        res.send(err);
-      });
+    await ticket.destroy();
+
+    res.redirect(`/admin/tickets?deleted=${encodeURIComponent(ticketName)}`);
+    
+  } catch (err) {
+    res.send(err);
   }
+}
 }
 
 module.exports = TicketController;
