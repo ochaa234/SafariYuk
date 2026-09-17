@@ -1,0 +1,12 @@
+[
+  { "TicketId": 1, "CategoryId": 1 },
+  { "TicketId": 2, "CategoryId": 2 },
+  { "TicketId": 2, "CategoryId": 4 },
+  { "TicketId": 3, "CategoryId": 1 },
+  { "TicketId": 3, "CategoryId": 3 },
+  { "TicketId": 4, "CategoryId": 2 },
+  { "TicketId": 5, "CategoryId": 3 },
+  { "TicketId": 6, "CategoryId": 3 },
+  { "TicketId": 6, "CategoryId": 5 },
+  { "TicketId": 7, "CategoryId": 5 }
+]
