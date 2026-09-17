@@ -1,0 +1,16 @@
+[
+  {
+    "email": "admin@safariyuk.com",
+    "password": "admin12345",
+    "role": "admin",
+    "fullName": "Admin SafariYuk",
+    "phone": "081200001111"
+  },
+  {
+    "email": "budi@mail.com",
+    "password": "budi12345",
+    "role": "customer",
+    "fullName": "Budi Santoso",
+    "phone": "081377778888"
+  }
+]

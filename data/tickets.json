@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Safari Journey Reguler",
+    "description": "Berkeliling area safari dengan kendaraan pribadi dan melihat satwa dari berbagai benua dari jarak dekat. Sudah termasuk akses ke area rekreasi dan pertunjukan satwa harian."
+  },
+  {
+    "name": "Night Safari Adventure",
+    "description": "Menjelajah area safari saat malam hari bersama pemandu, melihat perilaku satwa nokturnal yang jarang terlihat di siang hari. Kuota terbatas setiap malam."
+  },
+  {
+    "name": "Paket Keluarga Ceria",
+    "description": "Paket untuk 2 dewasa dan 2 anak: safari journey, area bermain anak, dan kesempatan berfoto bersama satwa jinak di zona edukasi."
+  },
+  {
+    "name": "Safari Trek Jeep Terbuka",
+    "description": "Berkeliling dengan jeep terbuka bersama ranger berpengalaman melewati jalur khusus yang tidak dilalui kendaraan pribadi. Durasi sekitar 90 menit."
+  },
+  {
+    "name": "Baby Zoo & Kelas Edukasi Satwa",
+    "description": "Kunjungan ke area bayi satwa dan kelas singkat tentang konservasi, cocok untuk anak usia sekolah dan rombongan keluarga."
+  },
+  {
+    "name": "Promo Liburan Sekolah",
+    "description": "Paket musiman selama liburan sekolah: safari journey plus akses pertunjukan satwa. Hanya berlaku selama periode liburan, setelah itu paket akan dihapus."
+  },
+  {
+    "name": "Promo Akhir Tahun Hemat",
+    "description": "Paket hemat menyambut akhir tahun untuk kunjungan hari kerja. Berlaku terbatas dan dapat dihapus admin setelah masa promo berakhir."
+  }
+]
