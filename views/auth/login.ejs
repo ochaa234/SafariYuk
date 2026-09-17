@@ -1,0 +1,29 @@
+<%- include('../partials/head', { title: 'Masuk' }) %>
+
+<section class="container auth">
+  <div class="auth-mascot mascot-sky">
+    <p class="bubble">Halo! Masuk dulu, ya.</p>
+    <div class="mascot-face"><%- include('../partials/face', { kind: 'lion' }) %></div>
+  </div>
+
+  <div class="panel">
+    <h1 class="panel-title">Masuk ke SafariYuk</h1>
+    <p class="muted">Masuk untuk memesan tiket dan melihat e-ticket kamu.</p>
+
+    <%- include('../partials/alerts') %>
+
+    <form method="POST" action="/login">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="text">
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password">
+
+      <button class="btn btn-jungle btn-block" type="submit">Masuk</button>
+    </form>
+
+    <p class="auth-switch">Belum punya akun? <a href="/register" class="link">Daftar</a></p>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,39 @@
+<%- include('../partials/head', { title: 'Edit paket' }) %>
+
+<section class="container section">
+  <a href="/admin/tickets" class="back-link">Kembali ke daftar paket</a>
+
+  <div class="panel edit-panel">
+    <div class="edit-head">
+      <div class="edit-face card-top-<%= ticket.animal %>"><%- include('../partials/face', { kind: ticket.animal }) %></div>
+      <h1 class="panel-title">Edit paket</h1>
+    </div>
+
+    <%- include('../partials/alerts') %>
+
+    <form method="POST" action="/admin/tickets/<%= ticket.id %>/edit">
+      <label for="name">Nama paket</label>
+      <input id="name" name="name" type="text" value="<%= ticket.name %>">
+
+      <label for="description">Deskripsi</label>
+      <textarea id="description" name="description" rows="5"><%= ticket.description %></textarea>
+
+      <p class="label">Kategori</p>
+      <div class="check-grid">
+        <% categories.forEach((category) => { %>
+          <label class="check">
+            <input type="checkbox" name="CategoryIds" value="<%= category.id %>" <%= selectedIds.includes(category.id) ? 'checked' : '' %>>
+            <%= category.name %>
+          </label>
+        <% }) %>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-jungle" type="submit">Simpan perubahan</button>
+        <a class="link" href="/admin/tickets">Batal</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

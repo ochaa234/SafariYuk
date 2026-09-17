@@ -1,0 +1,52 @@
+<%- include('../partials/head', { title: 'Paket wisata' }) %>
+
+<section class="page-head">
+  <div class="page-head-giraffe" aria-hidden="true"><%- include('../partials/giraffe') %></div>
+  <div class="container page-head-inner">
+    <h1 class="page-title">Paket wisata</h1>
+    <p class="muted">Pilih paket, lalu tentukan tanggal kunjunganmu.</p>
+
+    <form class="filter-bar" method="GET" action="/tickets">
+      <input type="text" name="search" value="<%= search %>" placeholder="Cari nama paket, misalnya night safari">
+      <select name="sort">
+        <option value="az">Nama A-Z</option>
+        <option value="za" <%= sort === 'za' ? 'selected' : '' %>>Nama Z-A</option>
+      </select>
+      <button class="btn btn-jungle" type="submit">Cari</button>
+    </form>
+  </div>
+</section>
+
+<section class="container section-tight">
+  <%- include('../partials/alerts') %>
+
+  <% if (tickets.length === 0) { %>
+    <div class="empty">
+      <div class="empty-face"><%- include('../partials/face', { kind: 'lion' }) %></div>
+      <h2>Paketnya tidak ketemu</h2>
+      <p>Coba kata kunci lain atau <a class="link" href="/tickets">tampilkan semua paket</a>.</p>
+    </div>
+  <% } else { %>
+    <div class="card-grid">
+      <% tickets.forEach((ticket) => { %>
+        <article class="card">
+          <div class="card-top card-top-<%= ticket.animal %>">
+            <%- include('../partials/face', { kind: ticket.animal }) %>
+          </div>
+          <div class="card-body">
+            <%- include('../partials/tags', { categories: ticket.Categories }) %>
+            <h2 class="card-title"><%= ticket.name %></h2>
+            <p class="card-desc"><%= ticket.description %></p>
+            <% if (session.role === 'admin') { %>
+              <a class="btn btn-outline" href="/admin/tickets/<%= ticket.id %>/edit">Edit paket</a>
+            <% } else { %>
+              <a class="btn btn-sun" href="/tickets/<%= ticket.id %>/book">Pilih tanggal</a>
+            <% } %>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>

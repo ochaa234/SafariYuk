@@ -1,0 +1,77 @@
+<%- include('../partials/head', { title: 'Kelola paket' }) %>
+
+<section class="page-head">
+  <svg class="page-head-monkey" viewBox="0 0 64 140" aria-hidden="true">
+    <path d="M32 0 V62" stroke="#2E8B57" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="26" cy="22" rx="7" ry="4" transform="rotate(-30 26 22)" fill="#3DBE6E"/>
+    <g transform="translate(0 60)">
+      <circle cx="11" cy="32" r="8" fill="#8C5A3C"/><circle cx="53" cy="32" r="8" fill="#8C5A3C"/>
+      <circle cx="11" cy="32" r="4.5" fill="#F1C9A0"/><circle cx="53" cy="32" r="4.5" fill="#F1C9A0"/>
+      <circle cx="32" cy="31" r="21" fill="#8C5A3C"/>
+      <circle cx="26" cy="27" r="8" fill="#F1C9A0"/><circle cx="38" cy="27" r="8" fill="#F1C9A0"/>
+      <ellipse cx="32" cy="38" rx="13" ry="10" fill="#F1C9A0"/>
+      <g><circle cx="26" cy="27" r="2.4" fill="#173326"/><circle cx="38" cy="27" r="2.4" fill="#173326"/></g>
+      <path d="M26 40 q6 5 12 0" stroke="#6B4129" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <div class="container page-head-inner">
+    <h1 class="page-title">Kelola paket wisata</h1>
+    <p class="muted"><%= tickets.length %> paket tersedia</p>
+
+    <form class="filter-bar" method="GET" action="/admin/tickets">
+      <input type="text" name="search" value="<%= search %>" placeholder="Cari nama paket">
+      <select name="sort">
+        <option value="az">Nama A-Z</option>
+        <option value="za" <%= sort === 'za' ? 'selected' : '' %>>Nama Z-A</option>
+      </select>
+      <button class="btn btn-jungle" type="submit">Cari</button>
+    </form>
+  </div>
+</section>
+
+<section class="container section-tight">
+  <%- include('../partials/alerts') %>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Paket</th>
+          <th>Kategori</th>
+          <th>Deskripsi</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% tickets.forEach((ticket, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td class="cell-name">
+              <span class="cell-face"><%- include('../partials/face', { kind: ticket.animal }) %></span>
+              <%= ticket.name %>
+            </td>
+            <td><%- include('../partials/tags', { categories: ticket.Categories }) %></td>
+            <td class="cell-desc"><%= ticket.shortDescription() %></td>
+            <td class="cell-actions">
+              <a class="btn btn-outline btn-sm" href="/admin/tickets/<%= ticket.id %>/edit">Edit</a>
+              <form method="POST" action="/admin/tickets/<%= ticket.id %>/delete" onsubmit="return confirm('Yakin mau menghapus paket ini?')">
+                <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+  <% if (tickets.length === 0) { %>
+    <div class="empty">
+      <div class="empty-face"><%- include('../partials/face', { kind: 'lion' }) %></div>
+      <h2>Paketnya tidak ketemu</h2>
+      <p>Coba kata kunci lain atau <a class="link" href="/admin/tickets">tampilkan semua paket</a>.</p>
+    </div>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>

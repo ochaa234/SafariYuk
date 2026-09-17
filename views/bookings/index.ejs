@@ -1,0 +1,51 @@
+<%- include('../partials/head', { title: 'Tiket saya' }) %>
+
+<section class="page-head">
+  <div class="page-head-elephant" aria-hidden="true"><%- include('../partials/face', { kind: 'elephant' }) %></div>
+  <div class="container page-head-inner">
+    <h1 class="page-title">Tiket saya</h1>
+    <p class="muted">E-ticket yang kamu pesan, diurutkan dari tanggal kunjungan terdekat.</p>
+  </div>
+</section>
+
+<section class="container section-tight">
+  <%- include('../partials/alerts') %>
+
+  <% if (bookings.length === 0) { %>
+    <div class="empty">
+      <div class="empty-face"><%- include('../partials/face', { kind: 'giraffe' }) %></div>
+      <h2>Belum ada tiket</h2>
+      <p>Pilih paket wisata dan tanggal kunjungan untuk membuat e-ticket pertamamu.</p>
+      <a class="btn btn-sun" href="/tickets">Lihat paket wisata</a>
+    </div>
+  <% } else { %>
+    <div class="booking-list">
+      <% bookings.forEach((booking) => { %>
+        <div class="booking-row <%= booking.isUpcoming ? '' : 'is-past' %>">
+          <div class="booking-face card-top-<%= booking.Ticket.animal %>">
+            <%- include('../partials/face', { kind: booking.Ticket.animal }) %>
+          </div>
+
+          <div class="booking-info">
+            <p class="booking-code"><%= booking.bookingCode %></p>
+            <h2 class="booking-name"><%= booking.Ticket.name %></h2>
+            <p class="muted"><%= booking.formattedVisitDate %></p>
+          </div>
+
+          <span class="status <%= booking.isUpcoming ? 'status-active' : 'status-past' %>"><%= booking.status %></span>
+
+          <div class="booking-actions">
+            <a class="btn btn-outline btn-sm" href="/bookings/<%= booking.id %>">Lihat e-ticket</a>
+            <% if (booking.isUpcoming) { %>
+              <form method="POST" action="/bookings/<%= booking.id %>/cancel" onsubmit="return confirm('Yakin mau membatalkan booking ini?')">
+                <button class="btn btn-danger btn-sm" type="submit">Batalkan booking</button>
+              </form>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>

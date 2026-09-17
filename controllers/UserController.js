@@ -1,7 +1,7 @@
 const { User, Profile, Ticket } = require('../models');
+const { comparePassword } = require('../helpers/bcrypt')
 
 class UserController {
-  // GET /
   static async home(req, res) {
     try {
       const tickets = await Ticket.getTickets();
@@ -43,15 +43,13 @@ class UserController {
     res.render('auth/login');
   }
 
-  // POST /login
-  // Login sederhana: cek email & password di database, lalu simpan data user di session
   static async login(req, res) {
     const { email, password } = req.body;
 
     try {
       const user = await User.findOne({ where: { email }, include: Profile });
 
-      if (!user || user.password !== password) {
+      if (!user || !comparePassword(password, user.password)) {
         return res.redirect('/login?error=Email atau password salah');
       }
 
@@ -68,7 +66,6 @@ class UserController {
     }
   }
 
-  // GET /logout
   static logout(req, res) {
     req.session.destroy(() => {
       res.redirect('/');

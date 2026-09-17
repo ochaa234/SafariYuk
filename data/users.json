@@ -12,5 +12,12 @@
     "role": "customer",
     "fullName": "Budi Santoso",
     "phone": "081377778888"
+  },
+  {
+    "email": "mike@mail.com",
+    "password": "mike12345",
+    "role": "admin",
+    "fullName": "Mike Arteta",
+    "phone": "081377778888"
   }
 ]

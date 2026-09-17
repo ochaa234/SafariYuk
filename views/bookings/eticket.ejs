@@ -1,0 +1,61 @@
+<%- include('../partials/head', { title: 'E-ticket' }) %>
+
+<section class="container section eticket-page">
+  <% if (isNew) { %>
+    <div class="alert alert-success no-print">Booking berhasil! Simpan QR Code ini untuk ditunjukkan saat masuk.</div>
+  <% } %>
+
+  <div class="eticket-wrap">
+    <div class="eticket-giraffe no-print" aria-hidden="true"><%- include('../partials/giraffe') %></div>
+
+    <div class="eticket">
+      <div class="eticket-main">
+        <div class="eticket-top">
+          <span class="eticket-brand">SafariYuk</span>
+          <span class="status <%= booking.isUpcoming ? 'status-active' : 'status-past' %>"><%= booking.status %></span>
+        </div>
+
+        <h1 class="eticket-name"><%= booking.Ticket.name %></h1>
+        <%- include('../partials/tags', { categories: booking.Ticket.Categories }) %>
+
+        <div class="eticket-meta">
+          <div>
+            <p class="meta-label">Tanggal kunjungan</p>
+            <p class="meta-value"><%= booking.formattedVisitDate %></p>
+          </div>
+          <div>
+            <p class="meta-label">Atas nama</p>
+            <p class="meta-value"><%= booking.User.Profile.fullName %></p>
+          </div>
+          <div>
+            <p class="meta-label">Nomor HP</p>
+            <p class="meta-value"><%= booking.User.Profile.phone %></p>
+          </div>
+          <div>
+            <p class="meta-label">Email</p>
+            <p class="meta-value"><%= booking.User.email %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="eticket-stub">
+        <img class="eticket-qr" src="<%= qrCode %>" alt="QR Code e-ticket">
+        <p class="eticket-code"><%= booking.bookingCode %></p>
+        <p class="eticket-hint">Tunjukkan ke petugas di pintu masuk</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="eticket-actions no-print">
+    <a class="btn btn-sun" href="<%= qrCode %>" download="e-ticket-<%= booking.bookingCode %>.png">Unduh QR Code</a>
+    <button type="button" class="btn btn-outline" onclick="window.print()">Cetak e-ticket</button>
+    <% if (booking.isUpcoming) { %>
+      <form method="POST" action="/bookings/<%= booking.id %>/cancel" onsubmit="return confirm('Yakin mau membatalkan booking ini?')">
+        <button class="btn btn-danger" type="submit">Batalkan booking</button>
+      </form>
+    <% } %>
+    <a href="/bookings" class="link">Semua tiket saya</a>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

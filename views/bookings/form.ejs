@@ -1,0 +1,34 @@
+<%- include('../partials/head', { title: 'Pesan tiket' }) %>
+
+<section class="container section">
+  <a href="/tickets" class="back-link">Kembali ke paket wisata</a>
+
+  <div class="book-grid">
+    <article class="card">
+      <div class="card-top card-top-big card-top-<%= ticket.animal %>">
+        <%- include('../partials/face', { kind: ticket.animal }) %>
+      </div>
+      <div class="card-body">
+        <%- include('../partials/tags', { categories: ticket.Categories }) %>
+        <h1 class="page-title"><%= ticket.name %></h1>
+        <p><%= ticket.description %></p>
+      </div>
+    </article>
+
+    <div class="panel">
+      <h2 class="panel-title">Tanggal kunjungan</h2>
+      <p class="muted">Tidak ada pembayaran. Setelah menekan Pesan, e-ticket QR langsung terbit.</p>
+
+      <%- include('../partials/alerts') %>
+
+      <form method="POST" action="/tickets/<%= ticket.id %>/book">
+        <label for="visitDate">Kapan kamu datang?</label>
+        <input id="visitDate" name="visitDate" type="date" min="<%= today %>">
+
+        <button class="btn btn-sun btn-block" type="submit">Pesan</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
