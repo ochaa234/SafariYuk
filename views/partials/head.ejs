@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> | SafariYuk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/" class="brand">
+        <span class="brand-paw"><%- include('paw') %></span>
+        SafariYuk
+      </a>
+
+      <nav class="nav-links">
+        <% if (!session.userId) { %>
+          <a href="/tickets">Paket wisata</a>
+          <a href="/login">Masuk</a>
+          <a href="/register" class="btn btn-sun btn-sm">Daftar</a>
+        <% } else if (session.role === 'admin') { %>
+          <a href="/admin/tickets">Kelola paket</a>
+          <span class="nav-name">Hai, <%= session.name.split(' ')[0] %></span>
+          <a href="/logout">Keluar</a>
+        <% } else { %>
+          <a href="/tickets">Paket wisata</a>
+          <a href="/bookings">Tiket saya</a>
+          <span class="nav-name">Hai, <%= session.name.split(' ')[0] %></span>
+          <a href="/logout">Keluar</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+  <main>

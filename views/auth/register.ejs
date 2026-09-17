@@ -1,0 +1,35 @@
+<%- include('../partials/head', { title: 'Daftar' }) %>
+
+<section class="container auth">
+  <div class="auth-mascot mascot-leaf">
+    <p class="bubble">Daftar sekali, booking berkali-kali!</p>
+    <div class="mascot-face"><%- include('../partials/face', { kind: 'monkey' }) %></div>
+  </div>
+
+  <div class="panel">
+    <h1 class="panel-title">Buat akun</h1>
+    <p class="muted">Nama dan nomor HP akan tercetak di e-ticket kamu.</p>
+
+    <%- include('../partials/alerts') %>
+
+    <form method="POST" action="/register">
+      <label for="fullName">Nama lengkap</label>
+      <input id="fullName" name="fullName" type="text">
+
+      <label for="phone">Nomor HP</label>
+      <input id="phone" name="phone" type="text" placeholder="08123456789">
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="text">
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" placeholder="Minimal 8 karakter">
+
+      <button class="btn btn-jungle btn-block" type="submit">Buat akun</button>
+    </form>
+
+    <p class="auth-switch">Sudah punya akun? <a href="/login" class="link">Masuk</a></p>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

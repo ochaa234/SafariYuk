@@ -1,0 +1,18 @@
+<% if (query.success) { %>
+  <div class="alert alert-success"><%= query.success %></div>
+<% } %>
+<% if (query.deleted) { %>
+  <div class="alert alert-success">Paket "<%= query.deleted %>" berhasil dihapus</div>
+<% } %>
+<% if (query.error) { %>
+  <div class="alert alert-error"><%= query.error %></div>
+<% } %>
+<% if (query.errors) { %>
+  <div class="alert alert-error">
+    <ul>
+      <% query.errors.split(';').forEach((message) => { %>
+        <li><%= message %></li>
+      <% }) %>
+    </ul>
+  </div>
+<% } %>

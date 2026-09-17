@@ -1,0 +1,146 @@
+<%- include('partials/head', { title: 'Pesan tiket Taman Safari' }) %>
+
+<section class="hero">
+  <!-- Pemandangan & hewan (hanya dekorasi) -->
+  <div class="scene" aria-hidden="true">
+    <svg class="sun" viewBox="0 0 120 120">
+      <g stroke="#FFC53D" stroke-width="6" stroke-linecap="round">
+        <line x1="60" y1="6" x2="60" y2="20"/><line x1="60" y1="100" x2="60" y2="114"/>
+        <line x1="6" y1="60" x2="20" y2="60"/><line x1="100" y1="60" x2="114" y2="60"/>
+        <line x1="22" y1="22" x2="32" y2="32"/><line x1="88" y1="88" x2="98" y2="98"/>
+        <line x1="22" y1="98" x2="32" y2="88"/><line x1="88" y1="32" x2="98" y2="22"/>
+      </g>
+      <circle cx="60" cy="60" r="28" fill="#FFC53D"/>
+    </svg>
+
+    <svg class="cloud cloud-1" viewBox="0 0 160 60"><path d="M20 55 Q0 55 5 40 Q10 25 30 30 Q35 5 65 10 Q85 0 100 20 Q125 12 135 32 Q160 35 150 55 Z" fill="#FFFFFF"/></svg>
+    <svg class="cloud cloud-2" viewBox="0 0 160 60"><path d="M20 55 Q0 55 5 40 Q10 25 30 30 Q35 5 65 10 Q85 0 100 20 Q125 12 135 32 Q160 35 150 55 Z" fill="#FFFFFF"/></svg>
+
+    <svg class="bird bird-1" viewBox="0 0 40 20"><path d="M2 12 Q10 2 20 12 Q30 2 38 12" stroke="#173326" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+    <svg class="bird bird-2" viewBox="0 0 40 20"><path d="M2 12 Q10 2 20 12 Q30 2 38 12" stroke="#173326" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+
+    <!-- Monyet bergelantungan -->
+    <svg class="monkey" viewBox="0 0 110 220">
+      <path d="M55 0 C48 25 62 45 56 68" stroke="#2E8B57" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <ellipse cx="46" cy="30" rx="9" ry="5" transform="rotate(-30 46 30)" fill="#3DBE6E"/>
+      <ellipse cx="64" cy="48" rx="9" ry="5" transform="rotate(30 64 48)" fill="#3DBE6E"/>
+      <path d="M42 176 C18 186 16 208 34 212 C46 214 48 202 40 200" stroke="#8C5A3C" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <ellipse cx="56" cy="160" rx="22" ry="28" fill="#8C5A3C"/>
+      <ellipse cx="56" cy="166" rx="13" ry="18" fill="#F1C9A0"/>
+      <path d="M46 184 C42 196 44 204 50 208 M66 184 C70 196 68 204 62 208" stroke="#8C5A3C" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <path d="M40 146 C30 158 30 172 36 180" stroke="#8C5A3C" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <circle cx="29" cy="114" r="7" fill="#8C5A3C"/><circle cx="29" cy="114" r="3.5" fill="#F1C9A0"/>
+      <circle cx="48" cy="114" r="19" fill="#8C5A3C"/>
+      <circle cx="42" cy="110" r="7" fill="#F1C9A0"/><circle cx="54" cy="110" r="7" fill="#F1C9A0"/>
+      <ellipse cx="48" cy="121" rx="11" ry="8" fill="#F1C9A0"/>
+      <g><circle cx="42" cy="110" r="2.3" fill="#173326"/><circle cx="54" cy="110" r="2.3" fill="#173326"/></g>
+      <path d="M43 124 Q48 128 53 124" stroke="#6B4129" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <path d="M58 68 C66 88 70 108 68 136" stroke="#8C5A3C" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <circle cx="57" cy="68" r="6" fill="#8C5A3C"/>
+    </svg>
+
+    <!-- Pohon akasia -->
+    <svg class="tree" viewBox="0 0 160 140">
+      <path d="M80 140 L82 72 M82 84 L62 52 M82 78 L102 54" stroke="#7A4E2D" stroke-width="7" stroke-linecap="round" fill="none"/>
+      <ellipse cx="80" cy="44" rx="72" ry="18" fill="#2E9E5B"/>
+      <ellipse cx="58" cy="32" rx="40" ry="14" fill="#3DBE6E"/>
+      <ellipse cx="106" cy="34" rx="38" ry="13" fill="#3DBE6E"/>
+    </svg>
+
+    <div class="giraffe"><%- include('partials/giraffe') %></div>
+
+    <svg class="hills" viewBox="0 0 1440 220" preserveAspectRatio="none">
+      <path d="M0 120 C240 60 420 60 660 110 C900 160 1140 70 1440 100 V220 H0 Z" fill="#8CDBA5"/>
+      <path d="M0 170 C300 120 560 150 820 160 C1080 170 1260 130 1440 150 V220 H0 Z" fill="#3DBE6E"/>
+    </svg>
+
+    <!-- Gajah berjalan -->
+    <svg class="elephant" viewBox="0 0 200 150">
+      <rect x="52" y="96" width="20" height="44" rx="8" fill="#8497A8"/>
+      <rect x="118" y="96" width="20" height="44" rx="8" fill="#8497A8"/>
+      <g>
+        <path d="M36 78 q-14 4 -12 20" stroke="#8497A8" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="92" cy="82" rx="58" ry="42" fill="#AFC0CE"/>
+        <circle cx="148" cy="64" r="30" fill="#AFC0CE"/>
+        <path d="M170 74 C184 86 186 110 178 124 C174 130 166 128 168 120 C172 108 170 94 158 86 Z" fill="#AFC0CE"/>
+        <ellipse cx="134" cy="66" rx="18" ry="24" fill="#93A7B8"/>
+        <ellipse cx="134" cy="68" rx="10" ry="15" fill="#F4B6C5"/>
+        <circle cx="158" cy="56" r="3.5" fill="#173326"/>
+        <path d="M162 84 q10 4 14 -2" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none"/>
+      </g>
+      <rect x="66" y="100" width="22" height="44" rx="8" fill="#AFC0CE"/>
+      <rect x="130" y="100" width="22" height="44" rx="8" fill="#AFC0CE"/>
+    </svg>
+  </div>
+
+  <div class="container hero-content">
+    <h1 class="hero-title">Pesan tiket safari, dapat QR, langsung ketemu satwa.</h1>
+    <p class="hero-lead">
+      Pilih paket wisata, isi tanggal kunjungan, dan e-ticket QR Code langsung terbit.
+      Tidak ada pembayaran online, cukup tunjukkan QR-nya saat datang.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-sun" href="/tickets">Lihat paket wisata</a>
+      <% if (!session.userId) { %>
+        <a class="btn btn-white" href="/register">Buat akun</a>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Cara pesan</h2>
+
+    <div class="paw-trail" aria-hidden="true">
+      <% for (let i = 0; i < 9; i++) { %>
+        <span><%- include('partials/paw') %></span>
+      <% } %>
+    </div>
+
+    <ol class="steps">
+      <li class="step">
+        <span class="step-num">1</span>
+        <h3>Pilih paket</h3>
+        <p>Lihat semua paket wisata beserta kategorinya, dari safari reguler sampai promo musiman.</p>
+      </li>
+      <li class="step">
+        <span class="step-num">2</span>
+        <h3>Isi tanggal kunjungan</h3>
+        <p>Tentukan kapan kamu datang, lalu tekan Pesan. Tanggal yang sudah lewat tidak bisa dipilih.</p>
+      </li>
+      <li class="step">
+        <span class="step-num">3</span>
+        <h3>Simpan e-ticket</h3>
+        <p>QR Code langsung terbit. Unduh atau cetak, lalu tunjukkan di pintu masuk. Berubah rencana? Batalkan saja.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<% if (tickets.length > 0) { %>
+<section class="section section-white">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Paket pilihan</h2>
+      <a class="link" href="/tickets">Semua paket</a>
+    </div>
+    <div class="card-grid">
+      <% tickets.forEach((ticket) => { %>
+        <article class="card">
+          <div class="card-top card-top-<%= ticket.animal %>">
+            <%- include('partials/face', { kind: ticket.animal }) %>
+          </div>
+          <div class="card-body">
+            <%- include('partials/tags', { categories: ticket.Categories }) %>
+            <h3 class="card-title"><%= ticket.name %></h3>
+            <p class="card-desc"><%= ticket.shortDescription() %></p>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<%- include('partials/footer') %>
