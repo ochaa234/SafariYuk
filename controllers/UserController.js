@@ -11,12 +11,10 @@ class UserController {
     }
   }
 
-  // GET /register
   static registerForm(req, res) {
     res.render('auth/register');
   }
 
-  // POST /register
   static async register(req, res) {
     const { fullName, phone, email, password } = req.body;
     let user = null;
@@ -27,7 +25,6 @@ class UserController {
 
       res.redirect('/login?success=Akun berhasil dibuat, silakan login');
     } catch (err) {
-      // kalau Profile gagal dibuat, User yang barusan dibuat dihapus lagi
       if (user) await user.destroy();
 
       if (err.name === 'SequelizeValidationError' || err.name === 'SequelizeUniqueConstraintError') {
@@ -37,8 +34,6 @@ class UserController {
       res.send(err);
     }
   }
-
-  // GET /login
   static loginForm(req, res) {
     res.render('auth/login');
   }
