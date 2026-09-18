@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       Ticket.hasMany(models.Booking);
     }
 
-    // Static method: ambil semua paket + kategorinya, bisa search dan sort
+    // Static methodnya
     static getTickets(search, sort) {
       const options = {
         include: sequelize.models.Category,
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       return Ticket.findAll(options);
     }
 
-    // Instance method: potong deskripsi yang panjang
+    // Instance method
     shortDescription() {
       if (this.description.length > 100) {
         return this.description.slice(0, 100) + '...';
@@ -35,7 +35,6 @@ module.exports = (sequelize, DataTypes) => {
       return this.description;
     }
 
-    // Getter: maskot hewan untuk tiap paket (dipakai di tampilan)
     get animal() {
       const animals = ['giraffe', 'elephant', 'lion', 'monkey'];
       return animals[(this.id - 1) % animals.length];

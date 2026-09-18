@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
       Booking.belongsTo(models.Ticket);
     }
 
-    // Static method: semua booking milik 1 user, beserta data tiketnya
     static getBookingsByUser(UserId) {
       return Booking.findAll({
         where: { UserId },

@@ -1,28 +1,38 @@
 const router = require('express').Router();
 const UserController = require('../controllers/UserController');
-const TicketController = require('../controllers/TicketController');
-const BookingController = require('../controllers/BookingController');
 
-// Landing, register, login, logout
+const ticketsRouter = require('./tickets');
+const bookingsRouter = require('./bookings');
+const adminRouter = require('./admin');
+
+const isLoggedIn = function(req, res, next) {
+  if (!req.session.userId) {
+    return res.redirect('/login?error=Harap login terlebih dahulu');
+  }
+  next();
+};
+
+const isAdmin = function(req, res, next) {
+  if (req.session.role !== 'admin') {
+    return res.redirect('/tickets?error=Anda tidak memiliki akses admin');
+  }
+  next();
+};
+
 router.get('/', UserController.home);
 router.get('/register', UserController.registerForm);
 router.post('/register', UserController.register);
 router.get('/login', UserController.loginForm);
 router.post('/login', UserController.login);
+
+router.use(isLoggedIn);
+
 router.get('/logout', UserController.logout);
+router.use('/tickets', ticketsRouter);
+router.use('/bookings', bookingsRouter);
 
-// Customer
-router.get('/tickets', TicketController.list);
-router.get('/tickets/:id/book', BookingController.bookForm);
-router.post('/tickets/:id/book', BookingController.create);
-router.get('/bookings', BookingController.myBookings);
-router.get('/bookings/:id', BookingController.eTicket);
-router.post('/bookings/:id/cancel', BookingController.cancel);
+router.use(isAdmin);
 
-// Admin
-router.get('/admin/tickets', TicketController.adminList);
-router.get('/admin/tickets/:id/edit', TicketController.editForm);
-router.post('/admin/tickets/:id/edit', TicketController.update);
-router.post('/admin/tickets/:id/delete', TicketController.delete);
+router.use('/admin', adminRouter);
 
 module.exports = router;
