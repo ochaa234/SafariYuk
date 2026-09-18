@@ -3,12 +3,10 @@ const { Booking, Ticket, Category, User, Profile } = require('../models');
 const { getTodayString } = require('../helpers');
 
 class BookingController {
-  // GET /tickets/:id/book  -> form tanggal kunjungan
   static async bookForm(req, res) {
     if (!req.session.userId) {
       return res.redirect('/login?error=Login dulu sebelum booking tiket');
     }
-
     try {
       const ticket = await Ticket.findByPk(req.params.id, { include: Category });
       res.render('bookings/form', { ticket, today: getTodayString() });
@@ -16,8 +14,7 @@ class BookingController {
       res.send(err);
     }
   }
-
-  // POST /tickets/:id/book  -> CREATE booking, lalu ke halaman e-ticket (QR Code)
+  //halaman e-ticket (QR Code)
   static async create(req, res) {
     if (!req.session.userId) {
       return res.redirect('/login?error=Login dulu sebelum booking tiket');
@@ -43,7 +40,6 @@ class BookingController {
     }
   }
 
-  // GET /bookings  -> tiket milik user yang sedang login
   static async myBookings(req, res) {
     if (!req.session.userId) {
       return res.redirect('/login?error=Login dulu untuk melihat tiketmu');
@@ -56,11 +52,9 @@ class BookingController {
       res.send(err);
     }
   }
-
-  // GET /bookings/:id  -> E-ticket + QR Code (MVP)
+  // E-ticket + QR Code (MVP)
   static async eTicket(req, res) {
     try {
-      // Eager loading: Bookings + Tickets + Categories + Users + Profiles
       const booking = await Booking.findByPk(req.params.id, {
         include: [
           { model: Ticket, include: Category },
@@ -76,8 +70,6 @@ class BookingController {
       res.send(err);
     }
   }
-
-  // POST /bookings/:id/cancel  -> user membatalkan booking
   static async cancel(req, res) {
     try {
       const booking = await Booking.findByPk(req.params.id);

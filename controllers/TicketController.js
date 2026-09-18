@@ -1,7 +1,6 @@
 const { Ticket, Category } = require('../models');
 
 class TicketController {
-  // GET /tickets  -> daftar paket untuk customer
   static async list(req, res) {
     const { search, sort } = req.query;
     try {
@@ -12,7 +11,7 @@ class TicketController {
     }
   }
 
-  // GET /admin/tickets  -> READ: tabel semua paket + kategori (eager loading)
+  // (eager loading)
   static async adminList(req, res) {
     const { search, sort } = req.query;
     try {
@@ -22,8 +21,6 @@ class TicketController {
       res.send(err);
     }
   }
-
-  // GET /admin/tickets/:id/edit
   static async editForm(req, res) {
     try {
       const ticket = await Ticket.findByPk(req.params.id, { include: Category });
@@ -36,7 +33,6 @@ class TicketController {
     }
   }
 
-  // POST /admin/tickets/:id/edit  -> UPDATE nama, deskripsi, dan kategori
   static async update(req, res) {
     const { id } = req.params;
     const { name, description, CategoryIds } = req.body;
@@ -56,7 +52,7 @@ class TicketController {
     }
   }
 
-  // POST /admin/tickets/:id/delete  -> DELETE pakai promise chaining 
+  //DELETE pakai promise chaining 
   static async delete(req, res) {
   try {
     const ticket = await Ticket.findByPk(req.params.id);
