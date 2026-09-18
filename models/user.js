@@ -5,8 +5,8 @@ const { hashPassword } = require('../helpers/bcrypt.js');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.hasOne(models.Profile);   // One to One
-      User.hasMany(models.Booking);  // One to Many
+      User.hasOne(models.Profile);  
+      User.hasMany(models.Booking);  // one to many
     }
   }
 
@@ -46,6 +46,6 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-
+  
   return User;
 };

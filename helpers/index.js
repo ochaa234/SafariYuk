@@ -1,4 +1,3 @@
-// "2026-10-03" -> "Sabtu, 3 Oktober 2026"
 function formatDate(date) {
   return new Date(date).toLocaleDateString('id-ID', {
     weekday: 'long',
@@ -7,8 +6,6 @@ function formatDate(date) {
     year: 'numeric'
   });
 }
-
-// Tanggal hari ini dalam format "YYYY-MM-DD"
 function getTodayString() {
   const today = new Date();
   const year = today.getFullYear();
@@ -17,7 +14,6 @@ function getTodayString() {
   return `${year}-${month}-${day}`;
 }
 
-// Kode e-ticket, contoh: SFY-7KQ2MX
 function generateBookingCode() {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let code = '';
